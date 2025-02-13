@@ -2,7 +2,6 @@
 <html lang="en">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
-        
         *{
           margin: 0px;
           padding: 0px;
@@ -35,19 +34,16 @@
             font-size: 15px;
         }
         .dropdown-item:hover {
-            background-color: rgb(185, 111, 133);
+            background-color: rgb(218, 175, 35);
             font-size: 16px;
         }
         .navbar-brand:hover{
             font-weight: bold;
-            color: rgb(255, 255, 255); 
+            color: rgb(255, 255, 254); 
             font-size: 23px;
         }
        
     </style>
-
-    <link href="https://fonts.cdnfonts.com/css/brigetha-signature" rel="stylesheet">
-                
 
 <head>
     <meta charset="UTF-8">
@@ -63,7 +59,7 @@
     <title>Alondra Vidal</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #F74235;" >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #F9A03F;" >
         <div class="container">
             <a href="index.html" class="navbar-brand" style="font-size: 23px;"> Inicio </a>
             <!-- boton que lleva a si mismo de color ....-->
@@ -78,9 +74,9 @@
                         <!--Lo que sigue son los menus que se van a desplegar hacia abajo, cada uno tendra el nombre de su practica,
                         ejemplo, practica 1 se llamará su nombre + el numero de la practica XX terminando con HTML-->
 
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #ffb8cd;">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFEC8C;">
                             <a href="" class="dropdown-menu" aria-labelledby="navbardropdownMenuLink">
-                               <a class="dropdown-item" href="/alondravid/alondra01.php" style="color: black;">Tulipanes rojos</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra01.php" style="color: black;">Tulipanes rojos</a><br>
                                 <a class="dropdown-item" href="/alondravid/alondra02.php" style="color: black;">Claveles rojos</a><br>
                                 <a class="dropdown-item" href="/alondravid/alondra03.php" style="color: black;">Dalias</a><br>
                             </a>
@@ -95,7 +91,7 @@
                         <!--Lo que sigue son los menus que se van a desplegar hacia abajo, cada uno tendra el nombre de su practica,
                         ejemplo, practica 1 se llamará su nombre + el numero de la practica XX terminando con HTML-->
 
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #ffb8cd;">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFEC8C;">
                             <a href="" class="dropdown-menu" aria-labelledby="navbardropdownMenuLink">
                                 <a class="dropdown-item" href="/alondravid/alondra04.php" style="color: black;">Rosas amarillas</a><br>
                                 <a class="dropdown-item" href="/alondravid/alondra05.php" style="color: black;">Fresias</a><br>
@@ -112,11 +108,11 @@
                         <!--Lo que sigue son los menus que se van a desplegar hacia abajo, cada uno tendra el nombre de su practica,
                         ejemplo, practica 1 se llamará su nombre + el numero de la practica XX terminando con HTML-->
 
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #ffb8cd;">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFEC8C;">
                             <a href="" class="dropdown-menu" aria-labelledby="navbardropdownMenuLink">
-                                <a class="dropdown-item" href="alondra07.html" style="color: black;">Condolencias</a><br>
-                                <a class="dropdown-item" href="alondra08.html" style="color: black;">Cumpleaños</a><br>
-                                <a class="dropdown-item" href="alondra09.html" style="color: black;">Nacimiento</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra07.php" style="color: black;">Condolencias</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra08.php" style="color: black;">Cumpleaños</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra09.php" style="color: black;">Nacimiento</a><br>
                             </a>
                         </div>
                         </a>
@@ -131,35 +127,16 @@
 
     
     <div class="jumbotron">
-
-    <?php 
-    $username = "root";
-    $password = "";
-    $servername = "localhost";
-    $database = "sanvalentin";
-
-    $conexion = new sanvaletin($username, $password, $servername, $database);
-    if($conexion->connect_error){
-        die("Conexion Fallida: ". $conexion->connect_error);
-    }
-    $sql = "SELECT * FROM flores"; //nombre de la tabla//
-    $resultado = $conexion->query($sql);
-    
-    
-    ?>
-        <h1 class="display-4" style="text-align: center; font-size: 50px; justify-content: center;" >Tulipanes rojos.</h1><br>
-        <p class="lead" style="text-align: center;"> Si hay unos tulipanes que llaman la atención sin duda alguna son los de color rojo. 
-            El color es realmente intenso y quieras o no la mirada se va con ellos. El significado de los tulipanes rojos se asocia a la pasión, 
-            a ese amor en un principio, tan intenso y bonito. Un ramo de tulipanes rojos siempre dirá mucho más de lo que parece a primera vista.
-             <br><br>
-            El rojo es, sin lugar a dudas, el color por excelencia del amor y la pasión. Una simbología que, si bien es sumamente popular en
-             flores como la rosa, también es común a otras como el tulipán.
-
-            Más allá de que el tulipán rojo sea ideal para transmitir estos sentimientos, hay que saber algo más. 
-            Y es que, en este color, estas flores 
-            transmiten un significado sumamente profundo. Si regalamos o nos regalan tulipanes rojos, con ellos tendremos la declaración de un compromiso 
-            absoluto con nuestra relación.<br>
-           <img src="/Imagenes/tp.jpg" width="20%" style="margin: 10px;">
+        <h1 class="display-4" style="text-align: center; font-size: 50px; justify-content: center;" >Lirios de los incas.</h1><br>
+        <p class="lead" style="text-align: center;"> 
+            El lirio de los incas fue descubierto en el siglo XVIII por el científico sueco Clas Alströmer, quien le otorgó su nombre actual
+             y despertó el interés de cientos de agricultores por su cultivo. Pero más allá de su valor como planta ornamental, esta flor está 
+             envuelta en una leyenda de amor y sacrificio que ha perdurado a lo largo del tiempo.<br><br>
+             Se dice que regalar o recibir astromelias es un gesto de amistad, devoción y amor eterno. Además, se le atribuyen connotaciones de 
+             buena suerte, riqueza y prosperidad. Sus hojas, ligeramente retorcidas, representan un lazo irrompible que perdura a lo largo de
+            la vida.
+             <br>
+           <img src="/alondravid/Imagenes/lirioss.jpg" width="20%" style="margin: 10px;">
         </p>
         <hr class="my-4">
         <p style="text-align: center;"> <strong>Alondra Yamilet Cobos Vidal</strong> </p>

@@ -44,6 +44,7 @@
         }
        
     </style>
+    
 
 <head>
     <meta charset="UTF-8">
@@ -134,7 +135,7 @@
              La variedad más habitual es la Dianthus caryophyllus.<br><br>
              El rojo es el color de la pasión y del amor, por lo que el significado de los claveles rojos está muy unido al amor pasional.
               Cuanto más intenso sea el rojo de tus claveles, más claro quedará tu mensaje.<br>
-           <img src="/Imagenes/claa.jpg" width="30%" style="margin: 13px;">
+           <img src="/alondravid/imagenes/claa.jpg" width="30%" style="margin: 13px;">
         </p>
         <hr class="my-4">
         <p style="text-align: center;"> <strong>Alondra Yamilet Cobos Vidal</strong> </p>

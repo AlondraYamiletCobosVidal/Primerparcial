@@ -114,9 +114,9 @@
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #ffb8cd;">
                             <a href="" class="dropdown-menu" aria-labelledby="navbardropdownMenuLink">
-                                <a class="dropdown-item" href="alondra07.html" style="color: black;">Condolencias</a><br>
-                                <a class="dropdown-item" href="alondra08.html" style="color: black;">Cumpleaños</a><br>
-                                <a class="dropdown-item" href="alondra09.html" style="color: black;">Nacimiento</a><br>
+                            <a class="dropdown-item" href="/alondravid/alondra07.php" style="color: black;">Condolencias</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra08.php" style="color: black;">Cumpleaños</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra09.php" style="color: black;">Nacimiento</a><br>
                             </a>
                         </div>
                         </a>
@@ -132,34 +132,14 @@
     
     <div class="jumbotron">
 
-    <?php 
-    $username = "root";
-    $password = "";
-    $servername = "localhost";
-    $database = "sanvalentin";
-
-    $conexion = new sanvaletin($username, $password, $servername, $database);
-    if($conexion->connect_error){
-        die("Conexion Fallida: ". $conexion->connect_error);
-    }
-    $sql = "SELECT * FROM flores"; //nombre de la tabla//
-    $resultado = $conexion->query($sql);
-    
-    
-    ?>
-        <h1 class="display-4" style="text-align: center; font-size: 50px; justify-content: center;" >Tulipanes rojos.</h1><br>
-        <p class="lead" style="text-align: center;"> Si hay unos tulipanes que llaman la atención sin duda alguna son los de color rojo. 
-            El color es realmente intenso y quieras o no la mirada se va con ellos. El significado de los tulipanes rojos se asocia a la pasión, 
-            a ese amor en un principio, tan intenso y bonito. Un ramo de tulipanes rojos siempre dirá mucho más de lo que parece a primera vista.
-             <br><br>
-            El rojo es, sin lugar a dudas, el color por excelencia del amor y la pasión. Una simbología que, si bien es sumamente popular en
-             flores como la rosa, también es común a otras como el tulipán.
-
-            Más allá de que el tulipán rojo sea ideal para transmitir estos sentimientos, hay que saber algo más. 
-            Y es que, en este color, estas flores 
-            transmiten un significado sumamente profundo. Si regalamos o nos regalan tulipanes rojos, con ellos tendremos la declaración de un compromiso 
-            absoluto con nuestra relación.<br>
-           <img src="/Imagenes/tp.jpg" width="20%" style="margin: 10px;">
+    <h1 class="display-4" style="text-align: center; font-size: 50px; justify-content: center;" >Dalias.</h1><br>
+        <p class="lead" style="text-align: center;"> 
+            La dalia es una flor de ornato, de gran importancia cultural, social y, hasta, gastronómica. El principal atractivo de las dalias,
+             es su diversidad de colores y formas, muchas de las especies de este cultivo son originarias de México. 
+             La dalia también es conocida como Acocoxochitl, que significa Flor nacional.<br><br>
+             El significado de la Dalia en el lenguaje de las flores de la época victoriana ha sobrevivido, por lo que cuando la entregas 
+             como regalo, esta flor expresa compromiso, cariño, dignidad y elegancia.
+          <br> <img src="/alondravid/Imagenes/dalias.jpg" width="25%" style="margin: 10px;">
         </p>
         <hr class="my-4">
         <p style="text-align: center;"> <strong>Alondra Yamilet Cobos Vidal</strong> </p>
