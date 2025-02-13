@@ -76,9 +76,9 @@
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #ffb8cd;">
                             <a href="" class="dropdown-menu" aria-labelledby="navbardropdownMenuLink">
-                                <a class="dropdown-item" href="alondra01.html" style="color: black;">Tulipanes rojos</a><br>
-                                <a class="dropdown-item" href="alondra02.html" style="color: black;">Claveles rojos</a><br>
-                                <a class="dropdown-item" href="alondra03.html" style="color: black;">Dalias</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra01.php" style="color: black;">Tulipanes rojos</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra02.php" style="color: black;">Claveles rojos</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra03.php" style="color: black;">Dalias</a><br>
                             </a>
                         </div>
                         </a>
@@ -93,9 +93,9 @@
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #ffb8cd;">
                             <a href="" class="dropdown-menu" aria-labelledby="navbardropdownMenuLink">
-                                <a class="dropdown-item" href="alondra04.html" style="color: black;">Rosas amarillas</a><br>
-                                <a class="dropdown-item" href="alondra05.html" style="color: black;">Fresias</a><br>
-                                <a class="dropdown-item" href="alondra06.html" style="color: black;">Lirios de los incas</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra04.php" style="color: black;">Rosas amarillas</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra05.php" style="color: black;">Fresias</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra06.php" style="color: black;">Lirios de los incas</a><br>
                             </a>
                         </div>
                         </a>
@@ -110,9 +110,9 @@
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: #ffb8cd;">
                             <a href="" class="dropdown-menu" aria-labelledby="navbardropdownMenuLink">
-                                <a class="dropdown-item" href="alondra07.html" style="color: black;">Condolencias</a><br>
-                                <a class="dropdown-item" href="alondra08.html" style="color: black;">Cumpleaños</a><br>
-                                <a class="dropdown-item" href="alondra09.html" style="color: black;">Nacimiento</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra07.php" style="color: black;">Condolencias</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra08.php" style="color: black;">Cumpleaños</a><br>
+                                <a class="dropdown-item" href="/alondravid/alondra09.php" style="color: black;">Nacimiento</a><br>
                             </a>
                         </div>
                         </a>
