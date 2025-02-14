@@ -43,7 +43,39 @@
             color: rgb(255, 255, 255); 
             font-size: 23px;
         }
-       
+        h2{
+            text-align:center;
+            color: pink;
+            margin-bottom: 20%;
+            align-items: center;
+            border-radius: 70%;
+        }
+        table{
+            width:100%;
+            border-collapse: collapse;
+            margin-top: 50px;
+            border-radius: 90px;
+        }
+        td,th{
+            padding: 20%;
+            text-align:left;
+            border-bottom: 1.5px solid black;
+        }
+        tr:nth-child(even){
+            background-color: #EEF0F2; 
+            color: black;
+            font-size: 20px;
+        }
+        tr:nth-child(odd){
+            background-color: #EFBCD5;
+            color: black;
+            font-size: 20px;
+        }
+        th{
+            background-color: #D62839;
+            color: white;
+            font-size: 25px;
+        }
     </style>
 
     <link href="https://fonts.cdnfonts.com/css/brigetha-signature" rel="stylesheet">
@@ -132,21 +164,7 @@
     
     <div class="jumbotron">
 
-    <?php 
-    $username = "root";
-    $password = "";
-    $servername = "localhost";
-    $database = "sanvalentin";
 
-    $conexion = new sanvaletin($username, $password, $servername, $database);
-    if($conexion->connect_error){
-        die("Conexion Fallida: ". $conexion->connect_error);
-    }
-    $sql = "SELECT * FROM flores"; //nombre de la tabla//
-    $resultado = $conexion->query($sql);
-    
-    
-    ?>
         <h1 class="display-4" style="text-align: center; font-size: 50px; justify-content: center;" >Tulipanes rojos.</h1><br>
         <p class="lead" style="text-align: center;"> Si hay unos tulipanes que llaman la atención sin duda alguna son los de color rojo. 
             El color es realmente intenso y quieras o no la mirada se va con ellos. El significado de los tulipanes rojos se asocia a la pasión, 
@@ -159,16 +177,60 @@
             Y es que, en este color, estas flores 
             transmiten un significado sumamente profundo. Si regalamos o nos regalan tulipanes rojos, con ellos tendremos la declaración de un compromiso 
             absoluto con nuestra relación.<br>
-           <img src="/Imagenes/tp.jpg" width="20%" style="margin: 10px;">
-        </p>
+           <img src="/alondravid/Imagenes/tr.webp" width="20%" style="margin: 10px;">
+      
+    <?php 
+    $username = "root";
+    $password = "";
+    $servername = "localhost";
+    $database = "sanvaletin";
+
+    $conexion = new mysqli($servername, $username, $password, $database);
+    if($conexion->connect_error){
+        die("Conexion Fallida: ". $conexion->connect_error);
+    }
+    $sql = "SELECT * FROM flores"; //nombre de la tabla//
+    $resultado = $conexion->query($sql);
+    ?>
+
+    <div class="container">
+        <h2> Datos de las flores </h2>
+
+        <?php if($resultado-> num_rows >0):?>
+        <table>
+            <tr>
+                <th>  </th>
+                <th> Nombre </th>
+                <th> Color </th>
+                <th> Rareza </th> 
+                <th> Clima </th>
+            </tr>
+
+            <?php while ($fila= $resultado->fetch_assoc()): ?>
+            <tr>
+                <td> <?php echo $fila['id']; ?> </td> 
+                <td> <?php echo $fila['nombre']; ?> </td>
+                <td> <?php echo $fila['color']; ?> </td>
+                <td> <?php echo $fila['rareza']; ?> </td>
+                <td> <?php echo $fila['clima']; ?> </td>
+            </tr>
+            <?php endwhile; ?>
+        </table>
+        <?php else: ?>
+            <p> No se encontraron los personajes</p>    
+            <?php endif; ?>
+        
+    </div>   
+
+    </p>
         <hr class="my-4">
         <p style="text-align: center;"> <strong>Alondra Yamilet Cobos Vidal</strong> </p>
         <p class="lead">
             
-        </p>
+        </p> 
     </div>
+  
     
-        
     
 
 
