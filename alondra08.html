@@ -106,8 +106,8 @@
 
 
     <header> 
-        <img src="logo3.png" alt="logo" style="width: 200px; height:100px; margin-right: 10px;">
         <form id="form">
+        <img src="logo4.png" alt="logo" class="logo" style="width: 200px; height:100px; margin-right: 10px;">
         <input type="text" id="search" class="search" placeholder="Busca tu ..."></form>  
     </header>
         <main id="main"></main>
@@ -134,7 +134,7 @@
                 //en esta linea se pondra todos los elementos al principio para el 
                 //forEach, es similar al "for", pero el for tiene su inicialización,
                 //condición y limitante
-                const{id, name, image, ki, maxKi, race, gender, description} = personaje;
+                const{id, name, image, ki, maxKi, race, gender, description} = char;
                 //aqui se pone lo que nos va interesar del API que vamos obtener
                 const charElement = document.createElement('div');
                 charElement.classList.add('personaje');
@@ -156,7 +156,7 @@
             })}
                 form.addEventListener('submit', (e) =>{
                     e.preventDefault()
-                    const searchTerm = search.value.toLoweCase();
+                    const searchTerm = search.value.toLowerCase();
                     if(searchTerm && searchTerm !== ''){
                         getCharacters(API_URL + `?name=${searchTerm}`)
                         search.value='';
