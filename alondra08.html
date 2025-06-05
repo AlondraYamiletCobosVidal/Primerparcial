@@ -10,104 +10,118 @@
     <style>
         @import url('https://fonts.cdnfonts.com/css/oxygen');
         @import url('https://fonts.cdnfonts.com/css/poppins');
+       
         *{
-            box-sizing: border-box;
-        }
-        :root{
-            --primary-color: #9b2226 ;
-            --secundary-color: #ae2012;
-            --terceary-color: #bb3e03;
-            --color-cuarto: #ca6702;
-            --color-quinto: #e2d7b2;
-        }
-        body{
-            background-color: var(--color-quinto);
-            font-family: 'Oxygen', sans-serif;                 
-            margin: 0;
-        }
-        header{
-            padding: 16px;
-            display: flex;
-            justify-content: flex-end;
-            background-color: var(--color-cuarto);
-        }
-        .search{
-            background-color: white;
-            border: 5px solid var(--primary-color);
-            border-radius:50px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 15px;
-            padding: 20px 16px;
-            color: black;
-        }
-        .search::placeholder{
-            color: black;
-        }
-        .search:focus{
-            outline: none;
-            background-color: white;
-        }
-        main{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .personaje{
-            width: 400;
-            margin:15px;
-            background-color: var(--color-quinto);
-            box-shadow: 10 4px 5px black;
-            position:relative;
-            overflow: hidden;
-            border-radius: 5;
-            display:flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-        }
-        .personaje img{
-            width: 100%;
-            height: 400px;
-            object-fit: contain;
-        }
-        .personaje-info{
-            color: black;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            padding: 0.8px 15px 15px;
-            letter-spacing: 5px;
-        }
-        .personaje-info h3{
-            color: var(--terceary-color);
-            margin-top: 0;
-        }
-        .personaje-info h1{
-            color: var(--terceary-color);
-            margin-top: 0;
-        }
-        .overview{
-            background-color: var(--color-quinto);
-            padding:15px;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            max-height: 100%;
-            transform: translateY(101%);
-            overflow-y: auto;
-            transition: transform 0.3s ease-in;
-        }
-        .personaje:hover .overview{
-            transform: translateY(0);
-        }
+        box-sizing: border-box;
+      }
+      :root{
+        --color-primario:#907ad6;
+         --color-secundario:#b6ccfe; 
+         --color-terceario:#ccdbfd;
+          --color-cuarto:#d7e3fc;
+           --color-quinto:#e8ecf7;
+
+      }
+      body{
+      background-color: var(--color-cuarto);
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      }
+      header{
+        padding: 16px;
+        display: flex;
+        justify-content: flex-end;
+        background-color: var(--color-primario);
+        align-items: center;
+        
+      }
+      .search{
+        background-color: white;
+        border:5px solid var(--color-terceario);
+        border-radius: 50px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 15px;
+        padding: 8px 15px;
+        color: black;
+      }
+      .search::placeholder{
+        color: black;
+
+      }
+     .search:focus{
+      outline: none;
+      background-color: white;
+     }
+     main{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+     }
+     .personaje{
+      width: 400px;
+      margin: 15px;
+      background-color: var(--color-quinto);
+      box-shadow: 10px 15px 1px var(--color-secundario);
+      position: relative;
+      overflow: hidden;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+     }
+     .personaje img{
+      width: 80%;
+      height: 400px;
+     object-fit: contain;    
+     }
+     .personaje-info{
+      color: var(--color-primario);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 0.8px 15px 15px;
+      letter-spacing: 5px;
+
+     }
+     .personaje-info h3{
+      color: var(--color-primario);
+      margin-top: 0;
+     }
+     .personaje-info h1{
+      color: var(--color-terceario);
+      margin-top: 0;
+     }
+    .overview{
+      background-color: var(--color-terceario);
+      padding: 15px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      max-height: 100%;
+      transform: translateY(101%);
+      overflow-y: auto;
+      transition: transform 1s ease-in;
+      
+    }
+    .personaje:hover .overview{
+      transform: translateY(0);
+    }
+    .logo {
+    width: 130px;
+    height: auto; 
+    object-fit: contain;
+    transform: scale(1.5);
+}
+    </style>
     </style>
 
 
     <header> 
+        <img src="logo4.png" alt="logo" style="width: 200px; height:100px; margin-right: 10px;">
         <form id="form">
-        <img src="logo4.png" alt="logo" class="logo" style="width: 200px; height:100px; margin-right: 10px;">
         <input type="text" id="search" class="search" placeholder="Busca tu ..."></form>  
     </header>
         <main id="main"></main>
