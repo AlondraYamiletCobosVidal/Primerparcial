@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dragon Ball API</title>
+    <title>Document</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -18,11 +18,11 @@
         box-sizing: border-box;
       }
       :root{
-        --color-primario:#907ad6;
+        --color-primario:#184e77;
          --color-secundario:#b6ccfe; 
          --color-terceario:#cad6f3;
-          --color-cuarto:#d7e3fc;
-           --color-quinto:#9241ca;
+          --color-cuarto:#f0ead2;
+           --color-quinto:#52b69a;
 
       }
       body{
@@ -62,12 +62,13 @@
      }
      .personaje{
       width: 400px;
-      margin: 15px;
-      background-color: var(--color-terceario);
+	  height: 500px;
+      margin: 20px;
+      background-color: #ecf0f9;
       box-shadow: 10px 15px 1px var(--color-secundario);
       position: relative;
       overflow: hidden;
-      border-radius: 5px;
+      border-radius: 8px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -119,9 +120,9 @@
     transform: scale(1.5);
 }
     </style>
-    
-    <header> 
-		  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #907ad6;">
+
+  <header> 
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #184e77;">
 				<div class="container">
 						<a class="navbar-brand" href="./index.html" style="color:white; text-align: center; font-size: 25px; font-weight: bolder;">Inicio</a>
 						<div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -158,67 +159,122 @@
 							</ul>
 						</div>
 				</div>
-        </nav>
-        <img src="logo4.png" alt="logo" style="width: 200px; height:80px; margin-left: 36%;">
-        <form id="form">
-        <input type="text" id="search" class="search" placeholder="Busca tu personaje"></form>
-          
-    </header>
+      </nav>
+      <img src="logo5.png" alt="logo" style="width: 80px; height:80px; margin-left: 45%;">
+      <form id="form">
+      <input type="text" id="search" class="search" placeholder="Busca tu personaje"></form>  
+  </header>
         <main id="main"></main>
 
 
     <script>
-        const API_URL = 'https://dragonball-api.com/api/characters';
+      const API_URL_RM = 'https://rickandmortyapi.com/api/character';
+      const API_URL_HP = 'https://hp-api.onrender.com/api/characters';
 
-        const main = document.getElementById('main');
-        const form = document.getElementById('form');  
-        const search = document.getElementById('search');
+      const main = document.getElementById('main');
 
-        getCharacters(API_URL)
+      const form = document.getElementById('form');
+      const search = document.getElementById('search');
 
-        async function getCharacters(url){
-            const res = await fetch(url);
-            const data = await res.json();
-            showCharacters(data.items || data);
-        } 
-        function showCharacters(characters){
-            main.innerHTML = '';
+        // APIs mezclados
+        getPersonajes();
+        //se le llama a la función que obtine todos los personajes
+        //de ambas APIs cuando carga por primera vez la pag.
+            async function getPersonajes() {
+            const [resRM, resHP] = await Promise.all([
+            fetch(API_URL_RM).then(res => res.json()),
+            fetch(API_URL_HP).then(res => res.json())
+            ]);
 
-            characters.forEach((char)=>{
-                //en esta linea se pondra todos los elementos al principio para el 
-                //forEach, es similar al "for", pero el for tiene su inicialización,
-                //condición y limitante
-                const{id, name, image, ki, maxki, race, gender, description} = char;
-                //aqui se pone lo que nos va interesar del API que vamos obtener
-                const charElement = document.createElement('div');
-                charElement.classList.add('personaje');
-                charElement.innerHTML = `
-                <img src="${image}" alt="${name}">
-                <div class="personaje-info">
-                    <h1>${id}</h1>
-                    <h3>${name}</h3>
-                   <br>
-                   ${race}
+            //la función async se pone pq se va usar await.
+            //se muestra un msj mientras se cargan los personajes.
+            //Se hacen ambas peticiones en paralelo con Promise.all.
+            //las respuestas se vuelven formato JSON 
+            //await hace que JavaScript espere el resultado de Promise.all(...)
+            //ates de continuar con el resto de código.
+            //Es decir, detiene la ejecución hasta que las respuestas esten listas.
+
+              const rm = resRM.results || [];
+              const hp = resHP || [];
+              //Se guardan los arrays de persnajes.
+              //RyM usa results, HP devuelve un array direcamente.
+
+              showPersonajes([...rm, ...hp]);
+              }
+              //se llama a showcharacters para mostrar todos los personajes juntos.
+
+              function showPersonajes(personajes) {
+              main.innerHTML = '';
+
+              
+              personajes.forEach((persona) => {
+                    let name = persona.name || 'Desconocido';
+                    let gender = persona.gender || 'No especificado';
+                    let species = persona.species || 'Desconocida';
+                    let image = persona.image || '';
+					let status = persona.status || (persona.alive === false ? 'Deceased' : 'Alive');
+
+                    const personaElement = document.createElement('div');
+                    personaElement.classList.add('personaje');
+                //esto sirve para identificar de quien es la busqueda, si de RyM o HP
+                //si el "personaje" tiene como estado vivo o muerto pertenece a RyM, pues 
+                //HP no tiene esatdo, solo casa, nombre, actor y género. Mientras que RyM
+                //tiene estado (vivo o muerto) Nombre, id y especie **(solo los que aparecen en descripción)**
+                    if (persona.status) { //  Si "persona" tiene "estado"
+                      let id = persona.id;  //etonces poner id. persona. id
+                      let status = persona.status; // poner persona. estado status
+
+                      personaElement.innerHTML = `
+                        <img src="${image}" alt="${name}">
+
+                        <div class="personaje-info">
+                          <h1>${id}</h1>
+                          <h3>${name}</h3>
+                          <br>${gender}
                         </div>
+
                         <div class="overview">
-                            <h3>Descripcion</h3>
-                            <p><strong>Ki:</strong> ${ki}</p>
-                            <p><strong>MaxKi:</strong> ${maxki}</p>
-                            ${description}
-                            </div>`
-                    main.appendChild(charElement);
-            })}
-                form.addEventListener('submit', (e) =>{
+                          <h3>Descripción</h3>
+                          <p><strong>Estado:</strong> ${status}</p>
+                          <p><strong>Especie:</strong> ${species}</p>
+                        </div>`;
+
+                   } else { //entoces poner
+
+                          // Harry Potter
+                          const { house, actor } = persona; //Extrae los datos de house y actor de la variable persona y las asigna a variables nuevas con el mismo nombre.
+
+                          personaElement.innerHTML = `
+                          <img src="${image}" alt="${name}">
+
+                          <div class="personaje-info">
+                          <h3>${name}</h3>
+                          <br>${actor}
+                          </div>
+
+                          <div class="overview">
+                          <h3>Descripción</h3>
+                          <p><strong>Casa:</strong> ${house || 'Desconocida'}</p>
+                          <p><strong>Género:</strong> ${gender}</p>
+                          <p><strong>Especie:</strong> ${species}</p>
+                          </div>
+                          `;}
+
+                          main.appendChild(personaElement);
+                          })}
+
+					//buscar los personajes
+                    form.addEventListener('submit', (e) =>{
                     e.preventDefault()
                     const searchTerm = search.value.toLowerCase();
                     if(searchTerm && searchTerm !== ''){
-                        getCharacters(API_URL + `?name=${searchTerm}`)
+                        getPersonajes(API_URL_RM + `?name=${searchTerm}`)
+						getPersonajes(API_URL_HP + `?name=${searchTerm}`)
                         search.value='';
                     }else{
                         window.location.reload();
                     }
-                })
-        </script>
-    
+                })   
+      </script>
 </body>
 </html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/oxygen');
+        @import url('https://fonts.cdnfonts.com/css/poppins');
+       
+        *{
+        box-sizing: border-box;
+      }
+      :root{
+        --color-primario:#184e77;
+         --color-secundario:#b6ccfe; 
+         --color-terceario:#cad6f3;
+          --color-cuarto:#f0ead2;
+           --color-quinto:#52b69a;
+
+      }
+      body{
+      background-color: var(--color-cuarto);
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      }
+      header{
+        padding: 16px;
+        display: flex;
+        justify-content: flex-end;
+        background-color: var(--color-primario);
+        align-items: center;
+        
+      }
+      .search{
+        background-color: white;
+        border:5px solid var(--color-terceario);
+        border-radius: 50px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 15px;
+        padding: 8px 15px;
+        color: black;
+      }
+      .search::placeholder{
+        color: black;
+
+      }
+     .search:focus{
+      outline: none;
+      background-color: white;
+     }
+     main{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+     }
+     .personaje{
+      width: 450px;
+      margin: 15px;
+      background-color: #ecf0f9;
+      box-shadow: 10px 15px 1px var(--color-secundario);
+      position: relative;
+      overflow: hidden;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+     }
+     .personaje img{
+      width: 80%;
+      height: 400px;
+     object-fit: contain;    
+     }
+     .personaje-info{
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 0.8px 15px 15px;
+      letter-spacing: 5px;
+
+     }
+     .personaje-info h3{
+      color: var(--color-quinto);
+      margin-top: 0;
+     }
+     .personaje-info h1{
+      color: var(--color-primario);
+      margin-top: 0;
+     }
+    .overview{
+      background-color: var(--color-terceario);
+      padding: 15px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      max-height: 100%;
+      transform: translateY(101%);
+      overflow-y: auto;
+      transition: transform 0.3s ease-in;
+      
+    }
+    .personaje:hover .overview{
+      transform: translateY(0);
+    }
+    .logo {
+    width: 130px;
+    height: auto; 
+    object-fit: contain;
+    transform: scale(1.5);
+}
+    </style>
+
+
+    <header> 
+        <img src="logo5.png" alt="logo" style="width: 80px; height:80px; margin-right: 10px;">
+        <form id="form">
+        <input type="text" id="search" class="search" placeholder="Busca tu personaje"></form>  
+    </header>
+        <main id="main"></main>
+
+<div class="RM">
+    <script>
+        const API_URL_RM= 'https://rickandmortyapi.com/api/character';        
+       
+        const main = document.getElementById('main');
+        const form = document.getElementById('form'); 
+        const search = document.getElementById('search');
+       
+        
+        getrm(API_URL_RM)
+
+        async function getrm(url){
+            const res = await fetch(url);
+            const data = await res.json();
+            showrm(data.results);
+        } 
+        function showrm(rm){
+            main.innerHTML = '';
+
+            rm.forEach((morty)=>{
+                //en esta linea se pondra todos los elementos al principio para el 
+                //forEach, es similar al "for", pero el for tiene su inicialización,
+                //condición y limitante
+                const{id, name, status, species, gender, image} = morty;
+                //aqui se pone lo que nos va interesar del API que vamos obtener
+                const mortyElement = document.createElement('div');
+                mortyElement.classList.add('personaje');
+                mortyElement.innerHTML = `
+                <img src="${image}" alt="${name}">
+                <div class="personaje-info">
+                    <h1>${id}</h1>
+                    <h3>${name}</h3>
+                   <br>
+                   ${gender}
+                        </div>
+                        <div class="overview">
+                            <h3>Descripcion</h3>
+                            <p><strong>Estado:</strong> ${status}</p>
+                            <p><strong>Especie:</strong> ${species}</p>
+                            
+                            </div>`
+                    main.appendChild(mortyElement);
+            })}
+                form.addEventListener('submit', (e) =>{
+                    e.preventDefault()
+                    const searchTerm = search.value.toLowerCase();
+                    if(searchTerm && searchTerm !== ''){
+                        getrm(API_URL_RM + `?name=${searchTerm}`)
+                        search.value='';
+                    }else{
+                        window.location.reload();
+                    }
+                })  
+
+        const API_URL = 'https://hp-api.onrender.com/api/characters';
+       
+        const main2 = document.getElementById('main2');
+        const form2 = document.getElementById('form2');  
+        const search2 = document.getElementById('search2');
+
+        gethp(API_URL)
+
+        async function gethp(url){
+            const res = await fetch(url);
+            const data = await res.json();
+            showhp(data);
+        } 
+        function showhp(harry){
+            main.innerHTML = '';
+
+            harry.forEach((potter)=>{
+                //en esta linea se pondra todos los elementos al principio para el 
+                //forEach, es similar al "for", pero el for tiene su inicialización,
+                //condición y limitante
+                const{id, name, image, house, actor, gender, species} = potter;
+                //aqui se pone lo que nos va interesar del API que vamos obtener
+                const potterElement = document.createElement('div');
+                potterElement.classList.add('personaje');
+                potterElement.innerHTML = `
+                <img src="${image}" alt="${name}">
+                <div class="personaje-info">
+                    
+                    <h3>${name}</h3>
+                   <br>
+                   ${actor}
+                        </div>
+                        <div class="overview">
+                            <h3>Descripción</h3>
+
+                            <p><strong>Casa:</strong> ${house}</p>
+                            <p><strong>Género:</strong> ${gender}</p>
+                            <p><strong>Especie:</strong> ${species}</p>
+                            
+                            </div>`
+                    main.appendChild(potterElement);
+            })}
+
+                form2.addEventListener('submit', (e) =>{
+                    e.preventDefault()
+                    const searchTerm = search2.value.toLowerCase();
+                    if(searchTerm && searchTerm !== ''){
+                        getrm(API_URL + `?name=${searchTerm}`)
+                        search2.value='';
+                    }else{
+                        window.location.reload();
+                    }
+                })
+        </script>
+     </div>
+
+    
+</body>
+</html>
