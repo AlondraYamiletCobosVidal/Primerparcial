@@ -207,63 +207,42 @@
               main.innerHTML = '';
 
               
+              //Se especifican todos los datos que quieres que salgan en overview o debajo de la imagen
+              //tienen que aparecer tanto en rym como en hp
               personajes.forEach((persona) => {
                     let name = persona.name || 'Desconocido';
                     let gender = persona.gender || 'No especificado';
                     let species = persona.species || 'Desconocida';
                     let image = persona.image || '';
 					let status = persona.status || (persona.alive === false ? 'Deceased' : 'Alive');
+                    let house = persona.house || '';
+                    let actor = persona.actor || '';
 
                     const personaElement = document.createElement('div');
                     personaElement.classList.add('personaje');
-                //esto sirve para identificar de quien es la busqueda, si de RyM o HP
-                //si el "personaje" tiene como estado vivo o muerto pertenece a RyM, pues 
-                //HP no tiene esatdo, solo casa, nombre, actor y género. Mientras que RyM
-                //tiene estado (vivo o muerto) Nombre, id y especie **(solo los que aparecen en descripción)**
-                    if (persona.status) { //  Si "persona" tiene "estado"
-                      let id = persona.id;  //etonces poner id. persona. id
-                      let status = persona.status; // poner persona. estado status
-
-                      personaElement.innerHTML = `
-                        <img src="${image}" alt="${name}">
-
-                        <div class="personaje-info">
-                          <h1>${id}</h1>
-                          <h3>${name}</h3>
-                          <br>${gender}
-                        </div>
-
-                        <div class="overview">
-                          <h3>Descripción</h3>
-                          <p><strong>Estado:</strong> ${status}</p>
-                          <p><strong>Especie:</strong> ${species}</p>
-                        </div>`;
-
-                   } else { //entoces poner
-
-                          // Harry Potter
-                          const { house, actor } = persona; //Extrae los datos de house y actor de la variable persona y las asigna a variables nuevas con el mismo nombre.
-
+                          // Harry Potter y rm datos
                           personaElement.innerHTML = `
                           <img src="${image}" alt="${name}">
 
                           <div class="personaje-info">
                           <h3>${name}</h3>
-                          <br>${actor}
+                          <br>${gender}
                           </div>
 
                           <div class="overview">
                           <h3>Descripción</h3>
                           <p><strong>Casa:</strong> ${house || 'Desconocida'}</p>
-                          <p><strong>Género:</strong> ${gender}</p>
+                          <p><strong>Estado:</strong> ${status}</p>
                           <p><strong>Especie:</strong> ${species}</p>
+                          <p><strong>Actor:</strong> ${actor || ''}</p>
+
                           </div>
-                          `;}
+                          `;
 
                           main.appendChild(personaElement);
                           })}
 
-					//buscar los personajes
+					//buscar los personajes (no funciona)
                     form.addEventListener('submit', (e) =>{
                     e.preventDefault()
                     const searchTerm = search.value.toLowerCase();
